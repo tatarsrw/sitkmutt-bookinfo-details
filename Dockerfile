@@ -1,9 +1,8 @@
-FROM ruby:2.7
+FROM ruby:2.7.4-bullseye
 
 WORKDIR /usr/src/app/
 
-COPY . /usr/src/app/
-#RUN bundle install
+COPY src/ /usr/src/app/
 
 EXPOSE 8081
 
