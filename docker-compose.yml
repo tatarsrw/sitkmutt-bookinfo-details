@@ -1,7 +1,7 @@
 services:
   details:
     build: .
-    image: ghcr.io/supakit25433/bookinfo-details:dev
+    image: ghcr.io/tatarsrw/bookinfo-details:dev
     ports:
       - "8081:8081"
     environment:
