@@ -1,0 +1,21 @@
+details:
+  namespace: student33-bookinfo-dev
+  replicas: 1
+  imagePullSecrets: registry-bookinfo
+  port: 8081
+  image: ghcr.io/tatarsrw/bookinfo-details
+  tag: dev
+ingress:
+  host: sitkmutt.bookinfo.dev.opsta.net
+  path: "/student33/details(/|$)(.*)"
+  serviceType: ClusterIP
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+extraEnv:
+  SERVICE_VERSION: v2
+  MONGO_DB_URL: mongodb://bookinfo-dev-details-mongodb:27017/details
+  MONGO_DB_USERNAME: details
+extraEnvSecret:
+  MONGO_DB_PASSWORD:
+    bookinfo-dev-details-mongodb-secret: mongodb-password
